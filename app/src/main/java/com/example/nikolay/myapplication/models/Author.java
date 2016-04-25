@@ -8,6 +8,7 @@ public class Author {
     private long dateOfBirth;
     private List<Audio> audios;
     private List<Band> bands;
+    private long id;
 
     public List<Band> getBands() {
         return bands;
@@ -47,5 +48,13 @@ public class Author {
 
     public void setDateOfBirth(long dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
