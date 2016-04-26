@@ -8,6 +8,7 @@ public class Album {
     private int dateOfPublishing;
     private List<Audio> audios;
     private List<Band> bands;
+    private String id;
 
     public List<Band> getBands() {
         return bands;
@@ -39,5 +40,13 @@ public class Album {
 
     public void setDateOfPublishing(int dateOfPublishing) {
         this.dateOfPublishing = dateOfPublishing;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

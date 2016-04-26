@@ -1,34 +1,35 @@
 package com.example.nikolay.myapplication.models;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import org.simpleframework.xml.Attribute;
-import org.simpleframework.xml.Root;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.List;
 
-@Root(name = "audio")
-public class Audio implements Serializable {
-    @Attribute(name = "title")
+public class Audio {
+    @SerializedName("id")
+    private String id;
+
     @SerializedName("title")
     private String title;
 
-    @Attribute(name = "duration")
     @SerializedName("duration")
     private int duration;
 
-    @Expose
-    private transient List<Author> authors;
+    @SerializedName("authors")
+    private List<Author> authors;
 
-    @Expose
-    private transient List<Album> albums;
+    @SerializedName("albums")
+    private List<Album> albums;
 
-    @Expose
-    private transient List<Band> bands;
+    @SerializedName("bands")
+    private List<Band> bands;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public List<Band> getBands() {
         return bands;
@@ -68,24 +69,5 @@ public class Audio implements Serializable {
 
     public void setAuthors(List<Author> authors) {
         this.authors = authors;
-    }
-
-    private void writeObject(ObjectOutputStream out) throws IOException {
-        out.defaultWriteObject();
-        out.writeInt(authors.size());
-        for (Author au : authors) {
-            out.writeLong(au.getId());
-        }
-
-    }
-
-    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-        in.defaultReadObject();
-        int size = in.readInt();
-        for (int i = 0; i < size; i++) {
-            Author object = new Author();
-            object.setId(in.readLong());
-            authors.add(object);
-        }
     }
 }
