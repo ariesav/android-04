@@ -1,5 +1,7 @@
 package com.example.nikolay.myapplication;
 
+import com.example.nikolay.myapplication.dao.AudioDao;
+import com.example.nikolay.myapplication.models.Audio;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -32,5 +34,14 @@ public class ExampleUnitTest {
     @Test
     public void addition_isNotCorrect() throws Exception {
         Assert.assertNotEquals(5, 2 + 2);
+    }
+
+    @Test
+    public void testAudioWrite() throws Exception {
+        Audio audio = new Audio();
+        audio.setTitle("aaaaa");
+        audio.setDuration(111);
+        AudioDao audioDao = new AudioDao();
+        audioDao.save(audio);
     }
 }

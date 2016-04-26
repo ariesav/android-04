@@ -1,16 +1,33 @@
 package com.example.nikolay.myapplication.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import org.simpleframework.xml.Attribute;
+import org.simpleframework.xml.Root;
+
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.List;
 
+@Root(name = "audio")
 public class Audio implements Serializable {
+    @Attribute(name = "title")
+    @SerializedName("title")
     private String title;
+
+    @Attribute(name = "duration")
+    @SerializedName("duration")
     private int duration;
+
+    @Expose
     private transient List<Author> authors;
+
+    @Expose
     private transient List<Album> albums;
+
+    @Expose
     private transient List<Band> bands;
 
     public List<Band> getBands() {
