@@ -1,6 +1,7 @@
 package com.example.nikolay.myapplication;
 
 import android.app.Application;
+import android.content.Context;
 import android.test.ApplicationTestCase;
 
 /**
@@ -9,5 +10,10 @@ import android.test.ApplicationTestCase;
 public class ApplicationTest extends ApplicationTestCase<Application> {
     public ApplicationTest() {
         super(Application.class);
+    }
+
+    public void testDatabase() throws Exception {
+        Context context = getContext();
+        assertNotNull(context);
     }
 }

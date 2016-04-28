@@ -1,29 +1,21 @@
 package com.example.nikolay.myapplication.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Author {
     private String firstName;
     private String lastName;
     private long dateOfBirth;
-    private List<Audio> audios;
-    private List<Band> bands;
-    private String id;
-
-    public List<Band> getBands() {
-        return bands;
-    }
-
-    public void setBands(List<Band> bands) {
-        this.bands = bands;
-    }
+    private List<Audio> audios = new ArrayList<Audio>();
+    private long id;
 
     public List<Audio> getAudios() {
         return audios;
     }
 
-    public void setAudios(List<Audio> audios) {
-        this.audios = audios;
+    public void addAudio(Audio audio) {
+        audios.add(audio);
     }
 
     public String getFirstName() {
@@ -50,11 +42,11 @@ public class Author {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }
