@@ -27,13 +27,15 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DELETE_AUTHORS =
             "drop table if exists " + DataContracts.AuthorEntry.TABLE_NAME;
 
-    private static final String CREATE_AUTHORS_AUTHIOS =
+    private static final String CREATE_AUTHORS_AUDIOS =
             "create table if not exists " + DataContracts.AudioAuthorLink.TABLE_NAME + " (" +
                     DataContracts.AudioAuthorLink._ID + " integer primary key," +
                     DataContracts.AudioAuthorLink.COLUMN_AUDIO_ID + " integer," +
-                    DataContracts.AudioAuthorLink.COLUMN_AUTHOR_ID + " integer)";
+                    DataContracts.AudioAuthorLink.COLUMN_AUTHOR_ID + " integer," +
+                    "unique(" + DataContracts.AudioAuthorLink.COLUMN_AUDIO_ID +
+                    "," + DataContracts.AudioAuthorLink.COLUMN_AUTHOR_ID + "))";
 
-    private static final String DELETE_AUTHORS_AUTHIOS =
+    private static final String DELETE_AUTHORS_AUDIOS =
             "drop table if exists " + DataContracts.AuthorEntry.TABLE_NAME;
 
     public DbHelper(Context context) {
@@ -44,14 +46,14 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_AUDIOS);
         db.execSQL(CREATE_AUTHORS);
-        db.execSQL(CREATE_AUTHORS_AUTHIOS);
+        db.execSQL(CREATE_AUTHORS_AUDIOS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DELETE_AUDIOS);
         db.execSQL(DELETE_AUTHORS);
-        db.execSQL(DELETE_AUTHORS_AUTHIOS);
+        db.execSQL(DELETE_AUTHORS_AUDIOS);
         onCreate(db);
     }
 }

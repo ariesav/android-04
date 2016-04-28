@@ -30,7 +30,7 @@ public class AudioDao {
         final List<Audio> audios = new ArrayList<Audio>();
         File data = new File(FILE_NAME);
 
-        audio.setId(UUID.randomUUID().toString());
+        audio.setId(UUID.randomUUID().clockSequence());
 
         if (data.exists()) {
             FileReader fileReader = null;
@@ -77,13 +77,13 @@ public class AudioDao {
         return true;
     }
 
-    public Audio load(String id) {
+    public Audio load(long id) {
         List<Audio> audios = loadAll();
         if (audios == null) {
             return null;
         }
         for (Audio audio : audios) {
-            if (audio.getId().equals(id)) {
+            if (audio.getId() == id) {
                 return audio;
             }
         }
@@ -170,7 +170,7 @@ public class AudioDao {
         @Override
         public Author deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             Author author = new Author();
-            author.setId(json.getAsString());
+            author.setId(json.getAsLong());
             return author;
         }
     }

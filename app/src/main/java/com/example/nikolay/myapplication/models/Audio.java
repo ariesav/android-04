@@ -41,4 +41,12 @@ public class Audio {
     public void addAuthor(Author author) {
         authors.add(author);
     }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 }
