@@ -11,7 +11,7 @@ import java.util.List;
 public class AudioDaoDb {
     private final SQLiteDatabase db;
 
-    public AudioDaoDb(SQLiteDatabase db) {
+    AudioDaoDb(SQLiteDatabase db) {
         this.db = db;
     }
 

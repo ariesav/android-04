@@ -1,1 +1,1 @@
-include ':app',':android-greendao-generator'
+include ':app', ':android-greendao-generator'
